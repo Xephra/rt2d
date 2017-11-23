@@ -13,8 +13,8 @@ OPTION(MAKE_GEOMETRIC "Make GeoMetric application" OFF)
 OPTION(MAKE_SHADY "Make custom Shader application" OFF)
 OPTION(MAKE_WOLFENSTEIN "Make Wolfenstein3D raycasting application" OFF)
 
-OPTION(USE_RS232 "Use RS232 library" ON)
-OPTION(MAKE_SERIAL "Make serial application" ON)
+OPTION(USE_RS232 "Use RS232 library" OFF)
+OPTION(MAKE_SERIAL "Make serial application" OFF)
 
 OPTION(USE_OPENAL "Use OpenAL library" OFF)
 OPTION(MAKE_AUDIOSTART "Make OpenAL/RT2D audiostart" OFF)

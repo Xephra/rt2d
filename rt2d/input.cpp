@@ -69,9 +69,14 @@ void Input::_handleMouse(unsigned int button)
 			_mouse[button] = true;
 			_mouseDown[button] = true;
 			_mouseUp[button] = false;//added by mike
+<<<<<<< HEAD
 									 //std::cout << "DOWN: " << button << std::endl;
 		}
 		else {
+=======
+			//std::cout << "DOWN: " << button << std::endl;
+		} else {
+>>>>>>> refs/remotes/rktrlng/master
 			// not the first time this is pressed
 			// keys[button] is still true;
 			_mouseDown[button] = false;
@@ -82,9 +87,14 @@ void Input::_handleMouse(unsigned int button)
 			_mouse[button] = false;
 			_mouseUp[button] = true;
 			_mouseDown[button] = false;//added by mike
+<<<<<<< HEAD
 									   //std::cout << "UP: " << button << std::endl;
 		}
 		else {
+=======
+			//std::cout << "UP: " << button << std::endl;
+		} else {
+>>>>>>> refs/remotes/rktrlng/master
 			_mouseUp[button] = false;
 		}
 	}
