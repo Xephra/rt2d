@@ -10,6 +10,9 @@
 #define MYSCENE_H
 
 #include <rt2d/scene.h>
+#include "grid.h"
+#include "player.h"
+#include "text.h"
 
 #include "myentity.h"
 
@@ -29,9 +32,13 @@ public:
 
 private:
 	/// @brief the rotating square in the middle of the screen
-	MyEntity* myentity;
+	////MyEntity* myentity;
+	Player* player;
+	Grid* grid;
+	Text* text;
+
+	Point2 playerPos;
 	/// @brief a Timer to rotate the color every n seconds
-	Timer t;
 };
 
 #endif /* SCENE00_H */
