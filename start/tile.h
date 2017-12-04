@@ -10,6 +10,10 @@
 #define TILE_H
 
 #include <rt2d/entity.h>
+#include <rt2d/text.h>
+#include <stdlib.h>
+#include <time.h>
+
 
 /// @brief The MyEntity class is the Entity implementation.
 class Tile : public Entity
@@ -24,12 +28,21 @@ public:
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
+	
+
+	Point2 pos;
+
+	Text* Xcord;
+	Text* Ycord;
 
 private:
-	bool isOccupied;
-	int posX;
-	int posY;
-	float _WallRatio;
+	bool isWall;
+	
+	int random1;
+	int random2;
+	int random3;
+	
+	float textSize;
 };
 
 #endif /* TILE */

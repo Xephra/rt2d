@@ -32,7 +32,7 @@ public:
 
 private:
 	/// @brief the rotating square in the middle of the screen
-	////MyEntity* myentity;
+	//MyEntity* myentity;
 	Player* player;
 	Grid* grid;
 	Text* text;

@@ -19,11 +19,11 @@ MyScene::MyScene() : Scene()
 
 	
 	////myentity = new MyEntity();
-	player = new Player();
 	grid = new Grid();
+	player = new Player();
 	text = new Text();
 
-	
+	player->grid = grid;
 	text->position = Point2(10, 713);
 	text->scale = Point2(0.25f, 0.25f);
 
@@ -35,7 +35,7 @@ MyScene::MyScene() : Scene()
 	// add myentity to this Scene as a child.
 	////this->addChild(myentity);
 	this->addChild(grid);
-	this->addChild(player);
+	this->addChild(player);	
 	this->addChild(text);
 }
 
@@ -56,9 +56,11 @@ MyScene::~MyScene()
 }
 
 void MyScene::update(float deltaTime)
-{
+{	
 	playerPos = player->pos;
-	text->message(std::to_string(playerPos.x/32 - 0.5f) +"   "+ std::to_string(playerPos.y / 32 - 0.5f));
+	text->message("Player position | x: " + std::to_string(playerPos.x/32 - 0.5f) +"  | y: "+ std::to_string(playerPos.y / 32 - 0.5f));
+
+
 
 	// ###############################################################
 	// Escape key stops the Scene
