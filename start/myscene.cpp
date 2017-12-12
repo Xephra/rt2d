@@ -11,17 +11,25 @@
 
 MyScene::MyScene() : Scene()
 {
+	Audio::init();
+	
+	Sound* sound = new Sound("assets/pyramidsong_s16.wav");
+	sound->loop(true);
+	sound->gain(0.5f);
+	sound->play();
+
 
 
 	// create a single instance of MyEntity in the middle of the screen.
 	// the Sprite is added in Constructor of MyEntity.
-	
 
 	
 	////myentity = new MyEntity();
 	grid = new Grid();
 	player = new Player();
 	text = new Text();
+
+
 
 	player->grid = grid;
 	text->position = Point2(10, 713);
@@ -59,8 +67,6 @@ void MyScene::update(float deltaTime)
 {	
 	playerPos = player->pos;
 	text->message("Player position | x: " + std::to_string(playerPos.x/32 - 0.5f) +"  | y: "+ std::to_string(playerPos.y / 32 - 0.5f));
-
-
 
 	// ###############################################################
 	// Escape key stops the Scene

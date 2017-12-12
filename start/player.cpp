@@ -8,6 +8,7 @@
 #include "myentity.h"
 #include "grid.h"
 
+
 Player::Player() : Entity()
 {
 	this->addSprite("assets/player.tga");
@@ -24,135 +25,43 @@ Player::~Player()
 
 void Player::update(float deltaTime)
 {
-	std::cout << lastPos << std::endl;
 	//Synchronising player position with position on grid
 	this->position = Point2(pos.x, pos.y);
 
+
 	gridPos = Point2(pos.x / 32 - 0.5f, pos.y / 32 - 0.5f);
 
-	// Fast walk implementation
-	if (input()->getKey(KeyCode::W) && fastWalkTimer > 0 &&
-		fastWalkTimer < 5 && fastWalkTimer == true)
-	{
-		lastPos = Point2(gridPos.x, gridPos.y);
-		
-		fastWalkTimer = 5;
-		this->pos.y -= 32;
-
-		if (gridPos.x == 15 && gridPos.y == 20)
-		{
-			this->gridPos.x = lastPos.x;
-			this->gridPos.y = lastPos.y;
-		}
-	}
-
-	if (input()->getKey(KeyCode::A) && fastWalkTimer > 0 &&
-		fastWalkTimer < 5 && fastWalkTimer == true)
-	{
-		lastPos = Point2(gridPos.x, gridPos.y);
-		fastWalkTimer = 5;
-		this->pos.x -= 32;
-
-		if (gridPos.x == 15 && gridPos.y == 20)
-		{
-			this->gridPos.x = lastPos.x;
-			this->gridPos.y = lastPos.y;
-		}
-	}
-	
-	if (input()->getKey(KeyCode::S) && fastWalkTimer > 0 &&
-		fastWalkTimer < 5 && fastWalkTimer == true)
-	{
-		lastPos = Point2(gridPos.x, gridPos.y);
-		fastWalkTimer = 5;
-		this->pos.y += 32;
-
-		if (gridPos.x == 15 && gridPos.y == 20)
-		{
-			this->gridPos.x = lastPos.x;
-			this->gridPos.y = lastPos.y;
-		}
-	}
-
-	if (input()->getKey(KeyCode::D) && fastWalkTimer > 0 &&
-		fastWalkTimer < 5 && fastWalkTimer == true)
-	{
-		lastPos = Point2(gridPos.x, gridPos.y);
-		fastWalkTimer = 5;
-		this->pos.x += 32;
-
-		if (gridPos.x == 15 && gridPos.y == 20)
-		{
-			this->gridPos.x = lastPos.x;
-			this->gridPos.y = lastPos.y;
-		}
-	}
-
 	//Slow movement
-	if (input()->getKeyDown(KeyCode::W))
-	{
-		lastPos = Point2(gridPos.x, gridPos.y);
-		fastWalkTimer = 10;
-		fastWalkToggle = true;
-		this->pos.y -= 32;
-
-		if (gridPos.x == 15 && gridPos.y == 20)
-		{
-			this->gridPos.x = lastPos.x;
-			this->gridPos.y = lastPos.y;
-		}
-	}
-	
-	if (input()->getKeyDown(KeyCode::A))
-	{
-		lastPos = Point2(gridPos.x, gridPos.y);
-		fastWalkTimer = 10;
-		fastWalkToggle = true;
-		this->pos.x -= 32;
-
-		if (gridPos.x == 15 && gridPos.y == 20)
-		{
-			this->gridPos.x = lastPos.x;
-			this->gridPos.y = lastPos.y;
-		}
-	}
-	
 	if (input()->getKeyDown(KeyCode::S))
 	{
-		lastPos = Point2(gridPos.x, gridPos.y);
-		fastWalkTimer = 10;
-		fastWalkToggle = true;
-		this->pos.y += 32;
-		
-		if (gridPos.x == 15 && gridPos.y ==	20)
+		if (!checkColission(down)) 
 		{
-			this->gridPos.x = lastPos.x;
-			this->gridPos.y = lastPos.y;
+			this->pos.y += 32;
 		}
-
 	}
-
+	
 	if (input()->getKeyDown(KeyCode::D))
 	{
-		lastPos = Point2(gridPos.x, gridPos.y);
-		fastWalkTimer = 10;
-		fastWalkToggle = true;
-		this->pos.x += 32;
-
-		if (gridPos.x == 15 && gridPos.y == 20)
+		if (!checkColission(right)) 
 		{
-			this->gridPos.x = lastPos.x;
-			this->gridPos.y = lastPos.y;
+			this->pos.x += 32;
+		}
+	}
+	
+	if (input()->getKeyDown(KeyCode::W))
+	{
+		if (!checkColission(up))
+		{
+			this->pos.y -= 32;
 		}
 	}
 
-
-	//Fastwalk counters and trackers
-	if (fastWalkTimer > 0) {
-		fastWalkTimer -= 1;
-	}
-	if (fastWalkTimer > 10){
-		fastWalkToggle = false;
+	if (input()->getKeyDown(KeyCode::A))
+	{
+		if (!checkColission(left))
+		{
+			this->pos.x -= 32;
+		}
 	}
 
 	//Border Implementation (hard coded)
@@ -177,5 +86,44 @@ void Player::update(float deltaTime)
 		pos.y - 1;
 		this->pos.y -= 32;
 	}
-	//std::cout << fastWalkTimer << std::endl;
+	//std::cout << lastPos << std::endl;
+}
+
+
+bool Player::checkColission(directions dir) 
+{
+	int xoffset = 0;
+	int yoffset = 0;
+
+	switch (dir)
+	{
+	case Player::up:
+		yoffset = -32;
+		break;
+	case Player::down:
+		yoffset = 32;
+		break;
+	case Player::left:
+		xoffset = -32;
+		break;
+	case Player::right:
+		xoffset = 32;
+		break;
+	default:
+		break;
+	}
+	
+	//Collision implementation
+	for (size_t i = 0; i < grid->tileList.size(); i++)
+	{
+		if (grid->tileList[i]->isWall &&
+			(this->position.x + xoffset) == grid->tileList[i]->position.x &&
+			(this->position.y + yoffset) == grid->tileList[i]->position.y)
+		{
+			return true;
+		}
+		
+	}
+	//End of collision implementation
+	return false;
 }

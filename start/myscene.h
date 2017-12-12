@@ -9,10 +9,14 @@
 #ifndef MYSCENE_H
 #define MYSCENE_H
 
+#include "audio/audio.h"
+#include "audio/sound.h"
+
 #include <rt2d/scene.h>
 #include "grid.h"
 #include "player.h"
 #include "text.h"
+
 
 #include "myentity.h"
 
@@ -36,6 +40,8 @@ private:
 	Player* player;
 	Grid* grid;
 	Text* text;
+
+	Sound* sound;
 
 	Point2 playerPos;
 	/// @brief a Timer to rotate the color every n seconds

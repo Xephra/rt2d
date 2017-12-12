@@ -28,19 +28,25 @@ public:
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
-	
 
 	Point2 pos;
+	Point2 tileGridPos;
+
+
+
+
+	bool isWall;
 
 	Text* Xcord;
 	Text* Ycord;
 
 private:
-	bool isWall;
-	
+
+	int rR;
+	int gR;
+	int bR;
+
 	int random1;
-	int random2;
-	int random3;
 	
 	float textSize;
 };

@@ -58,7 +58,8 @@ void Scene18::update(float deltaTime)
 	text[6]->message("");
 	text[10]->message(""); // clear player click count message
 
-	if (input()->getKeyDown(KeyCode::Space)) {
+	if (input()->getKeyDown(KeyCode::Space)) 
+	{
 		reset();
 	}
 
@@ -69,14 +70,18 @@ void Scene18::update(float deltaTime)
 		std::vector<Sprite*> spritebatch = grid->spritebatch();
 		int counter = 0;
 		int unvisitedcounter = 0;
-		for (int y=0; y<gridheight ; y++) {
-			for (int x=0; x<gridwidth; x++) {
+		for (int y=0; y<gridheight ; y++) 
+		{
+			for (int x=0; x<gridwidth; x++) 
+			{
+
 				// draw the correct cell
 				int fr = (int) cells[counter]->walls.to_ulong();
 				spritebatch[counter]->frame(fr);
 
 				// check visited, keep counter
-				if (cells[counter]->visited) {
+				if (cells[counter]->visited) 
+				{
 					spritebatch[counter]->color = WHITE;
 				} else {
 					//grid->spritebatch()[counter]->color = GREEN;
@@ -84,7 +89,8 @@ void Scene18::update(float deltaTime)
 				}
 
 				// color current cell
-				if (cells[counter] == current) {
+				if (cells[counter] == current) 
+				{
 					if (backtracking) {
 						spritebatch[counter]->color = RED;
 					} else {

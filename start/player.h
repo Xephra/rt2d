@@ -21,11 +21,20 @@ public:
 	/// @brief Destructor
 	virtual ~Player();
 
+	
+
+	enum directions {
+		up, down, left, right
+	};
+
 	/// @brief update is automatically called every frame
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
-	
+	bool Player::checkColission(directions dir);
+
+
+
 	Point2 lastPos;
 	Point2 pos;
 
@@ -35,8 +44,7 @@ public:
 
 private:
 	/* add your private declarations */
-	int fastWalkTimer;
-	bool fastWalkToggle;
+	
 };
 
 #endif /* MYENTITY_H */

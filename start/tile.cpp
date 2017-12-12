@@ -7,29 +7,17 @@
 #include "tile.h"
 #include "myentity.h"
 
+
 Tile::Tile() : Entity()
 {
-	unsigned int random1 = rand() % 255 + 1;
-	unsigned int random2 = rand() % 255 + 1;
-	unsigned int random3 = rand() % 255 + 1;
-	
-	this->addSprite("assets/wall.tga");
-	
-	if (random2 > 30) {
-		this->sprite()->color = RGBAColor(0, 0, 255, 255);
-	}
-	else 
-	{
-		isWall = true;
-		this->sprite()->color = RGBAColor(255, 255, 255, 255);
-	}
-	
-
 	this->pos = Point2(16, 16);
-	
+
 	textSize = 0.75f;
 
 	this->position = Point2(pos.x, pos.y);
+	
+
+	
 
 	Xcord = new Text();
 	Ycord = new Text();
@@ -56,6 +44,6 @@ Tile::~Tile()
 
 void Tile::update(float deltaTime)
 {
-	srand((unsigned)time(NULL));
+	//srand((unsigned)time(NULL));
 
 }

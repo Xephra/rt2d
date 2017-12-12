@@ -16,7 +16,7 @@ OPTION(MAKE_WOLFENSTEIN "Make Wolfenstein3D raycasting application" OFF)
 OPTION(USE_RS232 "Use RS232 library" OFF)
 OPTION(MAKE_SERIAL "Make serial application" OFF)
 
-OPTION(USE_OPENAL "Use OpenAL library" OFF)
+OPTION(USE_OPENAL "Use OpenAL library" ON)
 OPTION(MAKE_AUDIOSTART "Make OpenAL/RT2D audiostart" OFF)
 OPTION(MAKE_OPENAL_TONEGEN "Make OpenAL Tone Generator" OFF)
 
@@ -153,29 +153,7 @@ file(
 ####################################################################
 # start                                                            #
 ####################################################################
-IF(MAKE_START)
-	add_executable(start
-		start/main.cpp
-		start/myentity.cpp
-		start/myentity.h
-		start/myscene.cpp
-		start/myscene.h
-		start/grid.cpp
-		start/grid.h
-		start/tile.cpp
-		start/tile.h
-		start/player.cpp
-		start/player.h
-	)
-	target_link_libraries(start
-		${ALL_GRAPHICS_LIBS}
-	)
-	# Copy assets to the build directory
-	file(
-		COPY start/assets
-		DESTINATION ${CMAKE_BINARY_DIR}
-	)
-ENDIF()
+
 
 ####################################################################
 # demo                                                             #
@@ -408,6 +386,41 @@ IF(USE_OPENAL)
 	ELSE()
 		SET(OPENAL openal)
 	ENDIF()
+ENDIF()
+
+IF(MAKE_START)
+	add_executable(start
+		start/main.cpp
+		start/myentity.cpp
+		start/myentity.h
+		start/myscene.cpp
+		start/myscene.h
+		start/grid.cpp
+		start/grid.h
+		start/tile.cpp
+		start/tile.h
+		start/player.cpp
+		start/player.h
+		start/audio/audio.cpp
+		start/audio/audio.h
+		start/audio/sound.cpp
+		start/audio/sound.h
+		start/audio/wav.cpp
+		start/audio/wav.h
+	)
+	target_link_libraries(start
+		${ALL_GRAPHICS_LIBS}
+		${OPENAL}
+	)
+	# Copy assets to the build directory
+	file(
+		COPY start/assets
+		DESTINATION ${CMAKE_BINARY_DIR}
+	)
+	file(
+		COPY start/audio
+		DESTINATION ${CMAKE_BINARY_DIR}
+	)
 ENDIF()
 
 ####################################################################

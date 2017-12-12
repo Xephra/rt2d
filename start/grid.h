@@ -25,7 +25,7 @@ public:
 	/// @brief createGrid makes a grid
 	/// @return void
 	virtual void createGrid();
-
+	void createMaze();
 	/// @brief update is automatically called every frame
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
@@ -34,10 +34,16 @@ public:
 	int gridStepX;
 	int gridStepY;
 	
+	std::vector<Tile*>tileList;
+
 	bool occupied;
+
+
+	int random1;
 private:
 	/* add your private declarations */
-	std::vector<Tile*>tileList;
+
+
 	int gridWidth;
 	int gridHeight;
 
