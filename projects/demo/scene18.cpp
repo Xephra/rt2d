@@ -118,7 +118,7 @@ void Scene18::update(float deltaTime)
 		MCell* next = this->getRandomUnvisitedNeighbour(current);
 		if (next != NULL) { // there's still an unvisited neighbour. We're not stuck
 			backtracking = false;
-			next->visited = true;
+			next->visited = true
 
 			// STEP 2
 			stack.push_back(current); // drop a breadcrumb on the stack
