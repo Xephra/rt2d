@@ -19,8 +19,8 @@ public:
     void rewind();
     State state();
 
-    void pitch(float p);
-    void gain(float g);
+    void pitch(float p); //The pitch of the sound
+    void gain(float g); 
     void loop(bool l);
     void position(float x, float y, float z);
     void velocity(float x, float y, float z);

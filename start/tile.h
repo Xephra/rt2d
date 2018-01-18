@@ -3,7 +3,7 @@
 *
 * @file tile.h
 *
-* @brief description of MyEntity behavior.
+* @brief description of tile behavior.
 */
 
 #ifndef TILE_H
@@ -13,7 +13,6 @@
 #include <rt2d/text.h>
 #include <stdlib.h>
 #include <time.h>
-
 
 /// @brief The MyEntity class is the Entity implementation.
 class Tile : public Entity
@@ -29,26 +28,30 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
 
+	bool visited;
+
 	Point2 pos;
+
+	int col;
+	int row;
+
 	Point2 tileGridPos;
 
-
-
-
-	bool isWall;
+	//bool hasWalls[4];
 
 	Text* Xcord;
 	Text* Ycord;
 
 private:
 
-	int rR;
-	int gR;
-	int bR;
-
 	int random1;
 	
 	float textSize;
+
+	RGBAColor currentColor;
+
+	float targetTime;
+	float beatInterval;
 };
 
 #endif /* TILE */

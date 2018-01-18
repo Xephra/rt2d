@@ -23,7 +23,8 @@ public:
 
 	
 
-	enum directions {
+	enum directions 
+	{
 		up, down, left, right
 	};
 
@@ -31,9 +32,9 @@ public:
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
-	bool Player::checkColission(directions dir);
+	//bool Player::checkColission(directions dir);
 
-
+	int tileStep;
 
 	Point2 lastPos;
 	Point2 pos;
