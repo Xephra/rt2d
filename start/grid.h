@@ -25,34 +25,37 @@ public:
 
 	/// @brief createGrid makes a grid
 	/// @return void
-	virtual void createGrid();
-	
-	
-	
+	void create();
+
+
+
 	/// @brief update is automatically called every frame
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
 
-	int getIndex(int x, int y);
+	int getIndex(int x, int y, int w, int h);
 
 
 	std::vector<Tile*>tileList;
 	//Tile* next;	   //The tile that the maze algorithm will be working on next, in a random direction (see "checkNeighbors")
 	Tile* current; // The tile that the maze algorithm is currently working on
-
+	Tile* ladder;
+	Point2 ladderPosition;
+	bool isGenerating;
 	int unvisitedNeighbors;
 
 	int gridStepX;
 	int gridStepY;
-	
+
+
 	//Tile* tileList [1][1];
 
-	
-	
 	Tile* checkNeighbors(Tile* tile);
-
+	void clean();
+	void reset();
 	//int random1;
+
 
 
 	Timer timer;

@@ -30,6 +30,7 @@ public:
 
 	bool visited;
 
+
 	Point2 pos;
 
 	int col;
@@ -45,13 +46,10 @@ public:
 private:
 
 	int random1;
-	
+
 	float textSize;
 
-	RGBAColor currentColor;
-
-	float targetTime;
-	float beatInterval;
+	//RGBAColor currentColor;
 };
 
 #endif /* TILE */

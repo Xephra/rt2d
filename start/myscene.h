@@ -1,10 +1,10 @@
 /**
- * Copyright 2015 Your Name <you@yourhost.com>
- *
- * @file myscene.h
- *
- * @brief description of MyScene behavior.
- */
+* Copyright 2015 Your Name <you@yourhost.com>
+*
+* @file myscene.h
+*
+* @brief description of MyScene behavior.
+*/
 
 #ifndef MYSCENE_H
 #define MYSCENE_H
@@ -33,13 +33,18 @@ public:
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
+	void cleanGrid();
+	void makeGrid();
+
 
 private:
 	/// @brief the rotating square in the middle of the screen
 	//MyEntity* myentity;
-	Player* player;
+	Player * player;
 	Grid* grid;
 	Text* text;
+	Text* floorCounter;
+	int currentFloor;
 
 	Sound* sound;
 

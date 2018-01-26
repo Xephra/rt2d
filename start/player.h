@@ -1,10 +1,10 @@
 /**
- * Copyright 2015 Your Name <you@yourhost.com>
- *
- * @file myentity.h
- *
- * @brief description of MyEntity behavior.
- */
+* Copyright 2015 Your Name <you@yourhost.com>
+*
+* @file myentity.h
+*
+* @brief description of MyEntity behavior.
+*/
 
 #ifndef PLAYER_H
 #define PLAYER_H
@@ -21,9 +21,9 @@ public:
 	/// @brief Destructor
 	virtual ~Player();
 
-	
 
-	enum directions 
+
+	enum directions
 	{
 		up, down, left, right
 	};
@@ -32,7 +32,7 @@ public:
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
-	//bool Player::checkColission(directions dir);
+	bool Player::checkColission(directions dir);
 
 	int tileStep;
 
@@ -45,7 +45,7 @@ public:
 
 private:
 	/* add your private declarations */
-	
+
 };
 
 #endif /* MYENTITY_H */
